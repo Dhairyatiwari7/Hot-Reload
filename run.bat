@@ -1,0 +1,1 @@
+go run ./cmd/hotreload --root ./testserver --build "go build -o bin/server.exe ./testserver" --exec "bin/server.exe"
