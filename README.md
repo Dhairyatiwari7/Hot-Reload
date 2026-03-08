@@ -1,34 +1,42 @@
 HotReload – Go CLI Hot Reload Engine
 
 A lightweight CLI tool written in Go that automatically rebuilds and restarts a server when source code changes.
-This tool eliminates the need for developers to manually stop, rebuild, and restart servers during development.
 
-The tool watches a project directory and triggers a rebuild whenever a file is modified.
+HotReload eliminates the need for developers to manually stop, rebuild, and restart servers during development. The tool continuously watches a project directory and triggers a rebuild whenever a file is modified.
 
-Problem
+ Problem
 
-During development, engineers often follow this workflow:
+During development, engineers typically follow this repetitive workflow:
 
-1. Modify code
-2. Stop server
-3. Rebuild project
-4. Start server again
+Modify source code
 
-This process is repetitive and slows down development.
+Stop the running server
 
-HotReload automates this workflow by watching for file changes and restarting the server automatically.
+Rebuild the project
 
-Features
+Restart the server
 
-• Watches project directory recursively
-• Automatically rebuilds the project when code changes
-• Automatically restarts the server
-• Streams server logs in real time
-• Performs initial build when the tool starts
-• Supports nested project folders
-• Lightweight CLI tool written in Go
+This manual process slows down development and interrupts productivity.
 
-Project Structure
+HotReload automates this workflow by watching file changes and restarting the server automatically.
+
+ Features
+
+ Watches project directory recursively
+
+ Automatically rebuilds the project on code changes
+
+ Automatically restarts the server
+
+ Streams server logs in real time
+
+ Performs an initial build when the tool starts
+
+ Supports nested project folders
+
+ Lightweight CLI tool written in Go
+
+ Project Structure
 hotreload
 │
 ├── cmd
@@ -55,42 +63,38 @@ hotreload
 ├── go.mod
 └── README.md
 Installation
-
-Clone the repository:
-
+1️⃣ Clone the Repository
 git clone https://github.com/<your-username>/hotreload.git
 cd hotreload
-
-Install dependencies:
-
+2️⃣ Install Dependencies
 go mod tidy
-Running the Demo
+▶️ Running the Demo
 
-Run the hot reload tool:
+Run the hot reload engine with the following command:
 
 go run ./cmd/hotreload \
 --root ./testserver \
 --build "go build -o bin/server.exe ./testserver" \
 --exec "bin/server.exe"
-How It Works
+ How It Works
 
-The tool works in four steps:
+HotReload operates in four main stages:
 
-Watch Files
+1️⃣ Watch Files
 
 The watcher monitors the project directory using fsnotify.
 
-Detect Change
+2️⃣ Detect Changes
 
-When a file is modified, a change event is triggered.
+Whenever a file is modified, a file change event is triggered.
 
-Rebuild Project
+3️⃣ Rebuild Project
 
 The build command provided by the user is executed.
 
-Restart Server
+4️⃣ Restart Server
 
-The running server process is terminated and restarted.
+The running server process is terminated and restarted automatically.
 
 Example Workflow
 
@@ -98,7 +102,7 @@ Start the tool:
 
 go run ./cmd/hotreload --root ./testserver --build "go build -o bin/server.exe ./testserver" --exec "bin/server.exe"
 
-Output:
+Console output:
 
 HotReload starting...
 Building project...
@@ -109,7 +113,7 @@ Now modify:
 
 testserver/main.go
 
-Save the file.
+After saving the file, HotReload detects the change and rebuilds automatically.
 
 Output:
 
@@ -118,40 +122,36 @@ Building project...
 Stopping previous server...
 Starting server...
 
-Refresh the browser and the updated server will be running.
+Refreshing the browser will show the updated server.
 
-Demo Server
 
-A sample HTTP server is included in the repository for demonstration.
+testserver/main.go
 
-Open:
-
-http://localhost:8080
-
-Edit the message in testserver/main.go and save the file to see hot reload in action.
+Save the file and the server will automatically restart.
 
 Technologies Used
 
 Go
 
-fsnotify (file system notifications)
+fsnotify – File system notifications
 
-os/exec for process management
+os/exec – Process management
 
 Future Improvements
 
-Potential improvements include:
+Potential enhancements include:
 
-• Debouncing file events to avoid repeated builds
-• Ignoring unnecessary directories like .git and node_modules
-• Detecting newly created folders automatically
-• Better process termination for stubborn processes
-• Cross-platform support improvements
+Debouncing file events to prevent repeated builds
 
-Demo Video
+Ignoring directories like .git and node_modules
 
-A Loom video demonstrating the architecture and functionality of the tool will be provided as part of the assignment submission.
+Automatic detection of newly created folders
 
-Author
+Improved process termination for stubborn processes
+
+Enhanced cross-platform compatibility
+
+
+ Author
 
 Dhairya Tiwari
